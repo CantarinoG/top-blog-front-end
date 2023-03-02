@@ -4,7 +4,7 @@ import formatTime from "../utils/formatTime.js";
 
 import "../styles/Posts.css";
 
-function Posts({ baseURL }) {
+function Posts({ baseURL, setCurrentPost, setPath }) {
 
 useEffect(() => { //ComponentDidMount
 
@@ -12,15 +12,26 @@ useEffect(() => { //ComponentDidMount
         const ul = document.getElementById('posts-list');
         let html = "";
         for (let i = 0; i < data.length; i++) {
-            html += `<li><h1>${data[i].title}</h1><p>${data[i].content}</p><time>${formatTime(data[i].timestamp)}</time><button>See post</button></li>`;
+            html += `<li><h1>${data[i].title}</h1><p>${data[i].content}</p><time>${formatTime(data[i].timestamp)}</time><button class="see-post" id="${data[i]._id}">See post</button></li>`;
         }
         ul.innerHTML = html;
+    }
+
+    function addListeners() {
+        const btns = document.getElementsByClassName('see-post');
+        for (let i = 0; i < btns.length; i++) {
+            btns[i].addEventListener('click', () => {
+                setCurrentPost(btns[i].id);
+                setPath('/posts/id');
+            });
+        }
     }
 
     (async () => {
         const res = await fetch(`${baseURL}/posts`, { mode: 'cors' });
             const data = await res.json();
             displayData(data.posts);
+            addListeners();
       })()
 
 }, []);

@@ -1,12 +1,12 @@
 import "../styles/Header.css";
 
-function Header({loggedIn}) {
+function Header({loggedIn, setPath}) {
 
     return <header>
             {loggedIn 
             ? <>
                 <nav>
-                    <button className="logo">ByteBlog</button>
+                    <button className="logo" onClick={() => {setPath('/posts')}}>ByteBlog</button>
                 </nav>
                 <nav>
                     <button>Log Out</button>
@@ -14,11 +14,11 @@ function Header({loggedIn}) {
             </>
             : <>
                 <nav>
-                    <button className="logo">ByteBlog</button>
+                    <button className="logo" onClick={() => {setPath('/posts')}} >ByteBlog</button>
                 </nav>
                 <nav>
-                    <button>Sign Up</button>
-                    <button>Log In</button>
+                    <button onClick={() => {setPath('/signup')}}>Sign Up</button>
+                    <button onClick={() => {setPath('/login')}}>Log In</button>
                 </nav>
             </>}
         </header>
