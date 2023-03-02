@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Golos+Text&display=swap');
+
+:root {
+    --charcoal: #28536B;
+    --golos: 'Golos Text', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: calc(80px + 4%) 4% 4% 4%;
+    min-height: 100vh;
+}
