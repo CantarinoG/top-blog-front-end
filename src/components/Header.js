@@ -6,7 +6,7 @@ function Header({loggedIn}) {
             {loggedIn 
             ? <>
                 <nav>
-                    <button class="logo">ByteBlog</button>
+                    <button className="logo">ByteBlog</button>
                 </nav>
                 <nav>
                     <button>Log Out</button>
@@ -14,7 +14,7 @@ function Header({loggedIn}) {
             </>
             : <>
                 <nav>
-                    <button class="logo">ByteBlog</button>
+                    <button className="logo">ByteBlog</button>
                 </nav>
                 <nav>
                     <button>Sign Up</button>
