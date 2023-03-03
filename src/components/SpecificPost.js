@@ -4,7 +4,7 @@ import formatTime from "../utils/formatTime.js";
 
 import "../styles/SpecificPost.css";
 
-function SpecificPost({baseURL, currentPost, loggedIn}) {
+function SpecificPost({baseURL, currentPost, loggedIn, token}) {
 
 useEffect(() => { //ComponentDidMount
 
@@ -30,7 +30,6 @@ useEffect(() => { //ComponentDidMount
     fetch(`${baseURL}/posts/${currentPost}`, { mode: 'cors' }).then(function (response){
         return response.json();
     }).then(function (response){
-        console.log(response);
         displayPost(response.post);
         displayComments(response.comments);
     }).catch(function (err) {
@@ -40,10 +39,45 @@ useEffect(() => { //ComponentDidMount
 
 }, []);
 
+    const sendForm = (event) => {
+        event.preventDefault();
+        const content = document.getElementById('content').value;
+        fetch(`${baseURL}/posts/${currentPost}/comments/create`, { method: 'POST', mode: 'cors', headers: {'Content-Type':'application/x-www-form-urlencoded', 'authorization': `Bearer ${token}`}, body: `content=${content}` }).then(function (response){
+            return response.json();
+        }).then(function (response){
+            console.log(response);
+            const alerts = document.getElementById('alert');
+            if(response.alerts) {
+                alerts.innerHTML = response.alerts[0];
+            } else {
+                if(response.status == 200) {
+                    alerts.innerHTML = "";
+                    document.getElementById('success').innerHTML = "Success! Comment created! Reload the page to see your comment.";
+            }
+                return;
+            }
+        }).catch(function (err) {
+            document.getElementById('error').innerText = err;
+        });
+
+    }
+
     return <div className="post">
             <div id="post">Loading post...</div>
             <ul id="comments">Loading comments...</ul>
-            { loggedIn ? <>Here goes the form </> : <p className="create"> Log in to comment on this post! </p> }
+            { loggedIn ? 
+            <div className="newcomment">
+                <h2>Create a Comment</h2>
+                <p id="error"></p>
+                <p id="success"></p>
+                <ul id="alert"></ul>
+                <form onSubmit={sendForm}>
+                    <label htmlFor="content">Comment</label>
+                    <input type="text" name="content" id="content" required/>
+                    <button type="submit">Send Comment</button>
+                </form>
+            </div>
+             : <p className="create"> Log in to comment on this post! </p> }
         </div>
 }
 

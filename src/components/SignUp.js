@@ -1,6 +1,6 @@
 import "../styles/SignUp.css";
 
-function SignUp({baseURL, setPath}) {
+function SignUp({baseURL, setPath, loggedIn}) {
 
     const sendForm = (event) => {
         event.preventDefault();
@@ -28,7 +28,8 @@ function SignUp({baseURL, setPath}) {
 
     }
 
-    return <div className="signup">
+    if(!loggedIn) {
+        return <div className="signup">
         <h1>Create your account</h1>
         <p id="error"></p>
         <ul id="alert"></ul>
@@ -42,6 +43,11 @@ function SignUp({baseURL, setPath}) {
             <button type="submit">Create Account</button>
         </form>
     </div>
+    } else {
+        return <p>You are already logged in!</p>
+    }
+
+    return 
 }
 
 export default SignUp;

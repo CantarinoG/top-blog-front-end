@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 import "../styles/LogIn.css";
 
-function LogIn({baseURL, setPath, setToken, setLoggedIn}) {
+function LogIn({baseURL, setPath, setToken, setLoggedIn, loggedIn}) {
 
 useEffect(() => { //ComponentDidMount
 }, []);
@@ -14,16 +14,18 @@ useEffect(() => { //ComponentDidMount
         fetch(`${baseURL}/users/login`, { method: 'POST', mode: 'cors', headers: {'Content-Type':'application/x-www-form-urlencoded'}, body: `username=${username}&password=${password}` }).then(function (response){
             return response.json();
         }).then(function (response){
-            console.log(response.token);
             const alerts = document.getElementById('alert');
              if(response.alert) {
                 alerts.innerHTML = response.alert;
              } else {
-                alerts.innerHTML = "";
-                localStorage.setItem('token', response.token);
-                setLoggedIn(true); 
-                setToken(response.token);
-                setPath('/posts');
+                if(response.status == 200) {
+                    alerts.innerHTML = "";
+                    localStorage.setItem('token', response.token);
+                    setLoggedIn(true); 
+                    setToken(response.token);
+                    setPath('/posts');
+            }
+                return;
              }
         }).catch(function (err) {
             document.getElementById('error').innerText = err;
@@ -31,7 +33,8 @@ useEffect(() => { //ComponentDidMount
 
     }
 
-    return <div className="login">
+    if (!loggedIn) {
+        return <div className="login">
         <h1>Log In</h1>
         <p id="error"></p>
         <ul id="alert"></ul>
@@ -43,6 +46,9 @@ useEffect(() => { //ComponentDidMount
             <button type="submit">Log In</button>
         </form>
     </div>
+    } else {
+        return <p>You are already logged in!</p>
+    }
 }
 
 export default LogIn;

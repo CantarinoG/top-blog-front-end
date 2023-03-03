@@ -26,9 +26,9 @@ function App() {
   return <div className="App">
     <Header loggedIn={loggedIn} setPath={setPath} setLoggedIn={setLoggedIn} setToken={setToken}/>
     {path === '/posts' ? <Posts baseURL={baseURL} setCurrentPost={setCurrentPost} setPath={setPath}/> : null}
-    {path === '/posts/id' ? <SpecificPost baseURL={baseURL} currentPost={currentPost} loggedIn={loggedIn}/> : null}
-    {path === '/login' ? <LogIn baseURL={baseURL} setPath={setPath} setToken={setToken} setLoggedIn={setLoggedIn}/> : null}
-    {path === '/signup' ? <SignUp baseURL={baseURL} setPath={setPath}/> : null}
+    {path === '/posts/id' ? <SpecificPost baseURL={baseURL} currentPost={currentPost} loggedIn={loggedIn} token={token}/> : null}
+    {path === '/login' ? <LogIn baseURL={baseURL} setPath={setPath} setToken={setToken} setLoggedIn={setLoggedIn} loggedIn={loggedIn}/> : null}
+    {path === '/signup' ? <SignUp baseURL={baseURL} setPath={setPath} loggedIn={loggedIn}/> : null}
   </div>
 
 }
