@@ -1,0 +1,50 @@
+.signup {
+    width: 100%;
+    min-height: calc(92vh - 200px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+}
+
+.signup h1 {
+    color: var(--charcoal);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.signup form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.signup input {
+    font-family: var(--golos);
+}
+
+.signup button {
+    padding: 12px 24px;
+    border: none;
+    background-color: var(--charcoal);
+    color: white;
+    font-family: var(--golos);
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.signup button:hover {
+    filter: brightness(1.3);
+}
+
+.signup #alert {
+    list-style-type: none;
+    color: red;
+    text-align: center;
+}
+
+.singup #error {
+    color: red;
+    text-align: center;
+}

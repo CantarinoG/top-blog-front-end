@@ -5,6 +5,7 @@ import "./styles/main.css";
 import Header from "./components/Header";
 import Posts from "./components/Posts";
 import SpecificPost from "./components/SpecificPost";
+import SignUp from "./components/SignUp";
 
 function App() {
 
@@ -23,7 +24,7 @@ function App() {
     {path === '/posts' ? <Posts baseURL={baseURL} setCurrentPost={setCurrentPost} setPath={setPath}/> : null}
     {path === '/posts/id' ? <SpecificPost baseURL={baseURL} currentPost={currentPost} loggedIn={loggedIn}/> : null}
     {path === '/login' ? <h1>login</h1> : null}
-    {path === '/signup' ? <h1>signup</h1> : null}
+    {path === '/signup' ? <SignUp baseURL={baseURL} setPath={setPath}/> : null}
   </div>
 
 }
