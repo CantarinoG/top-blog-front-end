@@ -1,6 +1,12 @@
 import "../styles/Header.css";
 
-function Header({loggedIn, setPath}) {
+function Header({loggedIn, setPath, setLoggedIn, setToken}) {
+
+    function logOut() {
+        setLoggedIn(false); 
+        setToken(""); 
+        localStorage.setItem('token', "");
+    }
 
     return <header>
             {loggedIn 
@@ -9,7 +15,7 @@ function Header({loggedIn, setPath}) {
                     <button className="logo" onClick={() => {setPath('/posts')}}>ByteBlog</button>
                 </nav>
                 <nav>
-                    <button>Log Out</button>
+                    <button onClick={logOut}>Log Out</button>
                 </nav>
             </>
             : <>

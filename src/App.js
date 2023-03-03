@@ -24,7 +24,7 @@ function App() {
   }, []);
 
   return <div className="App">
-    <Header loggedIn={loggedIn} setPath={setPath}/>
+    <Header loggedIn={loggedIn} setPath={setPath} setLoggedIn={setLoggedIn} setToken={setToken}/>
     {path === '/posts' ? <Posts baseURL={baseURL} setCurrentPost={setCurrentPost} setPath={setPath}/> : null}
     {path === '/posts/id' ? <SpecificPost baseURL={baseURL} currentPost={currentPost} loggedIn={loggedIn}/> : null}
     {path === '/login' ? <LogIn baseURL={baseURL} setPath={setPath} setToken={setToken} setLoggedIn={setLoggedIn}/> : null}
