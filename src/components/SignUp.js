@@ -1,11 +1,6 @@
-import { useEffect } from "react";
-
 import "../styles/SignUp.css";
 
 function SignUp({baseURL, setPath}) {
-
-useEffect(() => { //ComponentDidMount
-}, []);
 
     const sendForm = (event) => {
         event.preventDefault();

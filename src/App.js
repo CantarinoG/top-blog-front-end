@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Posts from "./components/Posts";
 import SpecificPost from "./components/SpecificPost";
 import SignUp from "./components/SignUp";
+import LogIn from "./components/LogIn";
 
 function App() {
 
@@ -16,14 +17,17 @@ function App() {
   const [currentPost, setCurrentPost] = useState('');
 
   useEffect(() => { //ComponentDidMount
-    //Load token from local storage and update loggeidIn if it exists
+    if(localStorage.getItem('token') != null){
+      setLoggedIn(true);
+      setToken(localStorage.getItem('token'));
+    }
   }, []);
 
   return <div className="App">
     <Header loggedIn={loggedIn} setPath={setPath}/>
     {path === '/posts' ? <Posts baseURL={baseURL} setCurrentPost={setCurrentPost} setPath={setPath}/> : null}
     {path === '/posts/id' ? <SpecificPost baseURL={baseURL} currentPost={currentPost} loggedIn={loggedIn}/> : null}
-    {path === '/login' ? <h1>login</h1> : null}
+    {path === '/login' ? <LogIn baseURL={baseURL} setPath={setPath} setToken={setToken} setLoggedIn={setLoggedIn}/> : null}
     {path === '/signup' ? <SignUp baseURL={baseURL} setPath={setPath}/> : null}
   </div>
 
