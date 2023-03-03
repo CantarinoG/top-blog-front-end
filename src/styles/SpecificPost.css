@@ -1,0 +1,61 @@
+.post ul {
+    list-style-type: none;
+}
+
+.post #post {
+    padding-bottom: 30px;
+    border-bottom: 3px solid var(--charcoal);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: stretch;
+    text-align: center;
+}
+
+.post #post h1 {
+    letter-spacing: 2px;
+}
+
+.post #post time {
+    text-align: end;
+}
+
+.post #comments {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 30px;
+    align-items: stretch;
+    text-align: center;
+}
+
+.post #comments .user {
+    width: 100%;
+    display: block;
+    text-align: start;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: var(--charcoal);
+}
+
+.post #comments time {
+    width: 100%;
+    display: block;
+    text-align: end;
+}
+
+.post #comments li {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.post .create {
+    padding-top: 30px;
+    border-top: solid 1px var(--charcoal);
+    text-align: center;
+    font-size: 1.4em;
+    font-weight: bold;
+    color: var(--charcoal);
+}

@@ -27,18 +27,19 @@ useEffect(() => { //ComponentDidMount
         }
     }
 
-    (async () => {
-        const res = await fetch(`${baseURL}/posts`, { mode: 'cors' });
-            const data = await res.json();
-            displayData(data.posts);
-            addListeners();
-      })()
-
+    fetch(`${baseURL}/posts`, { mode: 'cors' }).then(function (response){
+        return response.json();
+    }).then(function (response){
+        displayData(response.posts);
+        addListeners();
+    }).catch(function (err) {
+        document.getElementById('posts-list').innerHTML = "Could not fetch posts."
+    });
 }, []);
 
     return <div className="posts">
             <main>
-                <ul id="posts-list"></ul>
+                <ul id="posts-list">Loading posts...</ul>
             </main>
             <aside>
                 <img alt="author" src="./img/author.svg"/>
