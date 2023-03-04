@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/top-blog-front-end/static/css/main.c18e417e.css",
+    "main.js": "/top-blog-front-end/static/js/main.d5c7ad6a.js",
+    "index.html": "/top-blog-front-end/index.html",
+    "main.c18e417e.css.map": "/top-blog-front-end/static/css/main.c18e417e.css.map",
+    "main.d5c7ad6a.js.map": "/top-blog-front-end/static/js/main.d5c7ad6a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c18e417e.css",
+    "static/js/main.d5c7ad6a.js"
+  ]
+}
